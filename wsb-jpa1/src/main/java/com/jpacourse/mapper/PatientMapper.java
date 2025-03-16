@@ -19,8 +19,7 @@ public class PatientMapper {
 					entity.getId(),
 					entity.getFirstName(),
 					entity.getLastName(),
-					// TODO uzupełnić po skończeniu LAB1
-					null,
+					AddressMapper.mapToTO(entity.getAddress()),
 					entity.getTelephoneNumber(),
 					entity.getEmail(),
 					entity.getPatientNumber(),
