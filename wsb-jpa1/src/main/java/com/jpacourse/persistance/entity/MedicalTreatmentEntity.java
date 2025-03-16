@@ -18,6 +18,9 @@ public class MedicalTreatmentEntity {
 	@Enumerated(EnumType.STRING)
 	private TreatmentType type;
 
+	@ManyToOne
+	private VisitEntity visit;
+
 	public Long getId() {
 		return id;
 	}

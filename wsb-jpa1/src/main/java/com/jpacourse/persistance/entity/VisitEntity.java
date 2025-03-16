@@ -17,6 +17,11 @@ public class VisitEntity {
 	@Column(nullable = false)
 	private LocalDateTime time;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	private DoctorEntity doctor;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private PatientEntity patient;
+
 	public Long getId() {
 		return id;
 	}

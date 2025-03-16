@@ -1,6 +1,7 @@
 package com.jpacourse.persistance.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -28,6 +29,12 @@ public class PatientEntity {
 
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
+
+	@OneToOne()
+	private AddressEntity address;
+
+	@OneToMany(mappedBy = "patient")
+	private List<VisitEntity> visits;
 
 	public Long getId() {
 		return id;
