@@ -30,6 +30,9 @@ public class DoctorEntity {
 	@Enumerated(EnumType.STRING)
 	private Specialization specialization;
 
+	@OneToOne
+	private AddressEntity address;
+
 	public Long getId() {
 		return id;
 	}
