@@ -14,17 +14,18 @@ public class PatientMapper {
 	public static PatientTO mapToTO(@Nullable PatientEntity patientEntity) {
 
 		return Optional.ofNullable(patientEntity)
-			.map(entity ->
-				new PatientTO(
-					entity.getId(),
-					entity.getFirstName(),
-					entity.getLastName(),
-					AddressMapper.mapToTO(entity.getAddress()),
-					entity.getTelephoneNumber(),
-					entity.getEmail(),
-					entity.getPatientNumber(),
-					entity.getDateOfBirth().toString()
-				))
-			.orElse(null);
+				.map(entity ->
+						new PatientTO(
+								entity.getId(),
+								entity.getFirstName(),
+								entity.getLastName(),
+								AddressMapper.mapToTO(entity.getAddress()),
+								entity.getTelephoneNumber(),
+								entity.getEmail(),
+								entity.getPatientNumber(),
+								entity.getDateOfBirth().toString(),
+								entity.getHeight()
+						))
+				.orElse(null);
 	}
 }

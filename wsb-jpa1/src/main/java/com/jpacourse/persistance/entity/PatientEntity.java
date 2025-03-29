@@ -22,6 +22,9 @@ public class PatientEntity {
 	@Column(nullable = false)
 	private String telephoneNumber;
 
+	@Column(nullable = false)
+	private Integer height;
+
 	private String email;
 
 	@Column(nullable = false)
@@ -35,6 +38,13 @@ public class PatientEntity {
 
 	@OneToMany(mappedBy = "patient")
 	private List<VisitEntity> visits;
+
+	public Integer getHeight() {
+		return height;
+	}
+	public void setHeight(Integer height) {
+		this.height = height;
+	}
 
 	public Long getId() {
 		return id;
