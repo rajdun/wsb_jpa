@@ -29,7 +29,7 @@ public class PatientController {
 	@GetMapping("/patient/{id}")
 	PatientTO findById(@PathVariable long id) {
 
-		return patientService.findById(id)
+		 return patientService.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException(id));
 	}
 

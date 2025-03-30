@@ -25,6 +25,7 @@ insert into visit(id, doctor_id, patient_id, time, description) values
                                                                     (302, 102, 202, '2024-03-26 14:30:00', 'Konsultacja przedoperacyjna'),
                                                                     (303, 103, 203, '2024-03-27 11:15:00', 'Badanie zmian skórnych'),
                                                                     (305, 103, 203, '2024-03-27 11:15:00', 'Badanie zmian skórnych v2'),
+                                                                    (306, 103, 201, '2026-03-27 11:15:00', 'Badanie zmian skórnych v2'),
                                                                     (304, 104, 204, '2024-03-28 09:45:00', 'Badanie wzroku');
 
 -- 5. Medical Treatments (using correct enum types)

@@ -33,7 +33,7 @@ public class PatientEntity {
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private AddressEntity address;
 
 	@OneToMany(mappedBy = "patient")

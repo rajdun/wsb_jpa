@@ -35,7 +35,7 @@ public class DoctorEntity {
 	@OneToOne()
 	private AddressEntity address;
 
-	@OneToMany(mappedBy = "doctor")
+	@OneToMany(mappedBy = "doctor", cascade = CascadeType.PERSIST)
 	private List<VisitEntity> visits;
 
 	public Long getId() {

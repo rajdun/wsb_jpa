@@ -24,7 +24,11 @@ public class PatientMapper {
 								entity.getEmail(),
 								entity.getPatientNumber(),
 								entity.getDateOfBirth().toString(),
-								entity.getHeight()
+								entity.getHeight(),
+								entity.getVisits()
+										.stream()
+										.map(VisitMapper::toVisitTONoRelations)
+										.toList()
 						))
 				.orElse(null);
 	}

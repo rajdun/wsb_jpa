@@ -4,8 +4,10 @@ package com.jpacourse.service.impl;
 import static com.jpacourse.mapper.PatientMapper.mapToTO;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.jpacourse.dto.VisitTO;
 import com.jpacourse.mapper.PatientMapper;
@@ -42,8 +44,17 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	public Optional<PatientTO> findById(long id) {
-
 		PatientEntity patient = patientDao.findOne(id);
+
+		if (patient == null) {
+			return Optional.empty();
+		}
+
+		List<VisitEntity> filteredVisits = patient.getVisits().stream()
+				.filter(visit -> visit.getTime().isBefore(LocalDateTime.now()))
+				.collect(Collectors.toList());
+
+		patient.setVisits(new ArrayList<>(filteredVisits)); // Ensure mutable list
 
 		return Optional.ofNullable(mapToTO(patient));
 	}

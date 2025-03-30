@@ -1,5 +1,7 @@
 package com.jpacourse.mapper;
 
+import com.jpacourse.dto.DoctorTO;
+import com.jpacourse.dto.PatientTO;
 import com.jpacourse.dto.VisitTO;
 import com.jpacourse.persistance.entity.VisitEntity;
 import jakarta.annotation.Nullable;
@@ -10,6 +12,16 @@ public class VisitMapper {
                 visit.getId(),
                 PatientMapper.mapToTO(visit.getPatient()),
                 DoctorMapper.toDoctorTO(visit.getDoctor()),
+                visit.getTime(),
+                visit.getDescription()
+        );
+    }
+
+    public static VisitTO toVisitTONoRelations(@Nullable VisitEntity visit) {
+        return visit == null ? null : new VisitTO(
+                visit.getId(),
+                null,
+                null,
                 visit.getTime(),
                 visit.getDescription()
         );

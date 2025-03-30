@@ -17,9 +17,9 @@ public class VisitEntity {
 	@Column(nullable = false)
 	private LocalDateTime time;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	private DoctorEntity doctor;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	private PatientEntity patient;
 
 	public Long getId() {

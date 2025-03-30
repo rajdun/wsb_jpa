@@ -18,7 +18,7 @@ public class MedicalTreatmentEntity {
 	@Enumerated(EnumType.STRING)
 	private TreatmentType type;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private VisitEntity visit;
 
 	public Long getId() {
