@@ -12,6 +12,7 @@ import com.jpacourse.mapper.PatientMapper;
 import com.jpacourse.mapper.VisitMapper;
 import com.jpacourse.persistance.dao.VisitDao;
 import com.jpacourse.persistance.entity.VisitEntity;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -23,6 +24,7 @@ import com.jpacourse.service.PatientService;
 
 
 @Service
+@Transactional
 public class PatientServiceImpl implements PatientService {
 
 	private final PatientDao patientDao;
