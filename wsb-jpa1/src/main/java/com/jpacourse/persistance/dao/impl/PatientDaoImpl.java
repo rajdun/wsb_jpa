@@ -40,4 +40,21 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
                 .setParameter("visitCount", count)
                 .getResultList();
     }
+
+    @Override
+    public List<PatientEntity> findByLastName(String lastName) {
+        String hql = "FROM PatientEntity p WHERE p.lastName = :lastName";
+        return entityManager.createQuery(hql, PatientEntity.class)
+                .setParameter("lastName", lastName)
+                .getResultList();
+    }
+
+    @Override
+    public List<PatientEntity> findByHeight(int height) {
+        String hql = "FROM PatientEntity p WHERE p.height >= :height";
+        return entityManager.createQuery(hql, PatientEntity.class)
+                .setParameter("height", height)
+                .getResultList();
+    }
+
 }
