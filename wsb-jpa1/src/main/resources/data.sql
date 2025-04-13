@@ -3,6 +3,7 @@ insert into address (id, address_line1, address_line2, city, postal_code) values
                                                                               (1001, 'ul. Kliniczna 5', 'blok C', 'Warszawa', '00-001'),
                                                                               (1002, 'ul. Zdrowia 12', NULL, 'Kraków', '30-060'),
                                                                               (1003, 'ul. Rehabilitacyjna 8', 'lok. 4', 'Poznań', '60-001'),
+                                                                              (901, '', '', '', '60-400'),
                                                                               (1004, 'ul. Okulistyczna 3', NULL, 'Wrocław', '50-002');
 
 -- 2. Doctors (using EXACT enum values)
