@@ -1,6 +1,7 @@
 package com.jpacourse.persistance.entity;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import jakarta.persistence.*;
 
@@ -21,6 +22,9 @@ public class VisitEntity {
 	private DoctorEntity doctor;
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
 	private PatientEntity patient;
+
+	@OneToMany(mappedBy = "visit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<MedicalTreatmentEntity> treatments;
 
 	public Long getId() {
 		return id;
