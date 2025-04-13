@@ -17,4 +17,5 @@ public interface PatientService {
 	List<PatientTO> getPatientsWithVisitCountGreaterThan(int count);
 	List<PatientTO> getPatientsWithHeightGreaterThan(int height);
 	List<VisitTO> getVisitsByPatientId(long patientId);
+	void deleteById(long id);
 }

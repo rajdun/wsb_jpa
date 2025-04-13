@@ -36,7 +36,7 @@ public class PatientEntity {
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private AddressEntity address;
 
-	@OneToMany(mappedBy = "patient")
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<VisitEntity> visits;
 
 	public Integer getHeight() {

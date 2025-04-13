@@ -57,4 +57,11 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
                 .getResultList();
     }
 
+    @Override
+    public void deleteById(long id) {
+        PatientEntity patient = entityManager.find(PatientEntity.class, id);
+        if (patient != null) {
+            entityManager.remove(patient);
+        }
+    }
 }

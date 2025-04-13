@@ -89,4 +89,10 @@ public class PatientServiceImpl implements PatientService {
 				.map(VisitMapper::toVisitTO)
 				.toList();
 	}
+
+	@Override
+	public void deleteById(long id) {
+
+		patientDao.deleteById(id);
+	}
 }

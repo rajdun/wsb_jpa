@@ -14,4 +14,5 @@ public interface PatientDao extends Dao<PatientEntity, Long> {
     List<PatientEntity> findByLastName(String lastName);
     List<PatientEntity> findByHeight(int height);
 
+    void deleteById(long id);
 }
