@@ -1,18 +1,19 @@
-package com.jpacourse.service;
+package com.jpacourse.persistance.dao;
 
-import com.jpacourse.dto.PatientTO;
 import com.jpacourse.dto.VisitTO;
 import com.jpacourse.persistance.dao.DoctorDao;
 import com.jpacourse.persistance.dao.PatientDao;
 import com.jpacourse.persistance.dao.VisitDao;
+import com.jpacourse.service.PatientService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 class PatientServiceIntegrationTest {
@@ -41,7 +42,8 @@ class PatientServiceIntegrationTest {
         System.out.println("Znaleziono " + visits.size() + " wizyt dla pacjenta o ID " + patientId);
     }
 
-    @Test //2.3
+    @Test
+        //2.3
 
     void shouldDeletePatientAndCascadeVisits() {
 

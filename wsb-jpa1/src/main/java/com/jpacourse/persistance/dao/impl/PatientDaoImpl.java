@@ -1,14 +1,12 @@
-
 package com.jpacourse.persistance.dao.impl;
 
 import com.jpacourse.persistance.dao.DoctorDao;
+import com.jpacourse.persistance.dao.PatientDao;
 import com.jpacourse.persistance.entity.DoctorEntity;
+import com.jpacourse.persistance.entity.PatientEntity;
 import com.jpacourse.persistance.entity.VisitEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.jpacourse.persistance.dao.PatientDao;
-import com.jpacourse.persistance.entity.PatientEntity;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,7 +29,7 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
         visit.setTime(dateTime);
         visit.setPatient(patientEntity);
         visit.setDoctor(doctorEntity);
-      //  entityManager.persist(visit);
+        //  entityManager.persist(visit);
 
         patientEntity.getVisits().add(visit);
 
