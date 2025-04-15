@@ -15,4 +15,5 @@ public class VisitDaoImpl extends AbstractDao<VisitEntity, Long> implements Visi
                 .setParameter("patientId", patientId)
                 .getResultList();
     }
+
 }

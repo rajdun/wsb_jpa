@@ -1,65 +1,66 @@
 package com.jpacourse.persistance.entity;
 
-import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
+import java.util.Set;
+
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "VISIT")
 public class VisitEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String description;
+	private String description;
 
-    @Column(nullable = false)
-    private LocalDateTime time;
+	@Column(nullable = false)
+	private LocalDateTime time;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    private DoctorEntity doctor;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    private PatientEntity patient;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	private DoctorEntity doctor;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	private PatientEntity patient;
 
-    public Long getId() {
-        return id;
-    }
+	@OneToMany(mappedBy = "visit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<MedicalTreatmentEntity> treatments;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public LocalDateTime getTime() {
-        return time;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public void setTime(LocalDateTime time) {
-        this.time = time;
-    }
+	public LocalDateTime getTime() {
+		return time;
+	}
 
-    public DoctorEntity getDoctor() {
-        return doctor;
-    }
+	public void setTime(LocalDateTime time) {
+		this.time = time;
+	}
 
-    public void setDoctor(DoctorEntity doctor) {
-        this.doctor = doctor;
-    }
-
-    public PatientEntity getPatient() {
-        return patient;
-    }
-
-    public void setPatient(PatientEntity patient) {
-        this.patient = patient;
-    }
+	public DoctorEntity getDoctor() {
+		return doctor;
+	}
+	public void setDoctor(DoctorEntity doctor) {
+		this.doctor = doctor;
+	}
+	public PatientEntity getPatient() {
+		return patient;
+	}
+	public void setPatient(PatientEntity patient) {
+		this.patient = patient;
+	}
 
 }
