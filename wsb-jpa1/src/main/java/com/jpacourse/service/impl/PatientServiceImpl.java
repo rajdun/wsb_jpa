@@ -42,24 +42,15 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public Optional<PatientTO> findById(long id) {
-        PatientEntity patient = patientDao.findOne(id);
+        Optional<PatientEntity> patient = patientDao.findByIdWithPastVisits(id);
 
-        if (patient == null) {
-            return Optional.empty();
-        }
+        return patient.map(PatientMapper::mapToTO);
 
-        List<VisitEntity> filteredVisits = patient.getVisits().stream()
-                .filter(visit -> visit.getTime().isBefore(LocalDateTime.now()))
-                .collect(Collectors.toList());
-
-        patient.setVisits(new ArrayList<>(filteredVisits)); // Ensure mutable list
-
-        return Optional.ofNullable(mapToTO(patient));
     }
 
     @Override
     public Optional<VisitTO> addVisit(int patientId, int doctorId, LocalDateTime time, String description) {
-        VisitEntity visit = patientDao.CreateVisit(patientId, doctorId, time, description);
+        VisitEntity visit = patientDao.createVisit(patientId, doctorId, time, description);
 
         return Optional.ofNullable(VisitMapper.toVisitTO(visit));
     }

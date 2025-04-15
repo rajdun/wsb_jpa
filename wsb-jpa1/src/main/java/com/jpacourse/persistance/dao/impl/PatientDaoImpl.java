@@ -5,11 +5,13 @@ import com.jpacourse.persistance.dao.PatientDao;
 import com.jpacourse.persistance.entity.DoctorEntity;
 import com.jpacourse.persistance.entity.PatientEntity;
 import com.jpacourse.persistance.entity.VisitEntity;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -19,7 +21,7 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
     private DoctorDao doctorDao;
 
     @Override
-    public VisitEntity CreateVisit(long patientId, long doctorId, LocalDateTime dateTime, String description) {
+    public VisitEntity createVisit(long patientId, long doctorId, LocalDateTime dateTime, String description) {
 
         PatientEntity patientEntity = findOne(patientId);
         DoctorEntity doctorEntity = doctorDao.findOne(doctorId);
@@ -29,7 +31,6 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
         visit.setTime(dateTime);
         visit.setPatient(patientEntity);
         visit.setDoctor(doctorEntity);
-        //  entityManager.persist(visit);
 
         patientEntity.getVisits().add(visit);
 
@@ -75,6 +76,24 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
         PatientEntity patient = entityManager.find(PatientEntity.class, id);
         if (patient != null) {
             entityManager.remove(patient);
+        }
+    }
+
+    @Override
+    public Optional<PatientEntity> findByIdWithPastVisits(long id) {
+        String jpql = "SELECT DISTINCT p FROM PatientEntity p " +
+                "LEFT JOIN FETCH p.visits v " +
+                "WHERE p.id = :id AND (v.time < :now OR v IS NULL)";
+
+        TypedQuery<PatientEntity> query = entityManager.createQuery(jpql, PatientEntity.class);
+        query.setParameter("id", id);
+        query.setParameter("now", LocalDateTime.now());
+
+        try {
+            PatientEntity result = query.getSingleResult();
+            return Optional.of(result);
+        } catch (jakarta.persistence.NoResultException e) {
+            return Optional.empty();
         }
     }
 }
