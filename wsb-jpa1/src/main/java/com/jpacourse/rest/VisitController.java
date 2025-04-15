@@ -25,17 +25,14 @@ public class VisitController {
     }
 
     @PutMapping("/visit")
-    public VisitTO PutVisit(){
+    public VisitTO putVisit() throws RuntimeException {
         // TO JEST TESTOWA METODA - W ZADANIU NIE BYLO NIC O KONTROLERZE A CHCIALEM TYLKO ZOABCZYC CZY BEDZIE DZIALAC
-        Optional<VisitTO> result = patientService.AddVisit(201, 101, LocalDateTime.MIN, "test");
+        Optional<VisitTO> result = patientService.addVisit(201, 101, LocalDateTime.MIN, "test");
 
-        if(result.isPresent())
-        {
+        if (result.isPresent()) {
             return result.get();
-        }
-        else
-        {
-            throw new RuntimeException("Error creating visit");
+        } else {
+            throw new RuntimeException("Visit not created");
         }
     }
 }

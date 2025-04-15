@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface PatientDao extends Dao<PatientEntity, Long> {
     VisitEntity CreateVisit(long patientId, long doctorId, LocalDateTime dateTime, String description);
+
     List<PatientEntity> getPatientsWithVisitCountGreaterThan(int count);
+
     List<PatientEntity> getPatientsWithHeightGreaterThan(int height);
 }

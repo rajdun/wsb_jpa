@@ -1,124 +1,125 @@
 package com.jpacourse.persistance.entity;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.List;
-
-import jakarta.persistence.*;
 
 @Entity
 @Table(name = "PATIENT")
 public class PatientEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(nullable = false)
-	private String firstName;
+    @Column(nullable = false)
+    private String firstName;
 
-	@Column(nullable = false)
-	private String lastName;
+    @Column(nullable = false)
+    private String lastName;
 
-	@Column(nullable = false)
-	private String telephoneNumber;
+    @Column(nullable = false)
+    private String telephoneNumber;
 
-	@Column(nullable = false)
-	private Integer height;
+    @Column(nullable = false)
+    private Integer height;
 
-	private String email;
+    private String email;
 
-	@Column(nullable = false)
-	private String patientNumber;
+    @Column(nullable = false)
+    private String patientNumber;
 
-	@Column(nullable = false)
-	private LocalDate dateOfBirth;
+    @Column(nullable = false)
+    private LocalDate dateOfBirth;
 
-	@OneToOne(cascade = CascadeType.PERSIST)
-	private AddressEntity address;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private AddressEntity address;
 
-	@OneToMany(mappedBy = "patient")
-	private List<VisitEntity> visits;
+    @OneToMany(mappedBy = "patient")
+    private List<VisitEntity> visits;
 
-	public Integer getHeight() {
-		return height;
-	}
-	public void setHeight(Integer height) {
-		this.height = height;
-	}
+    public Integer getHeight() {
+        return height;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public String getTelephoneNumber() {
-		return telephoneNumber;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setTelephoneNumber(String telephoneNumber) {
-		this.telephoneNumber = telephoneNumber;
-	}
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getPatientNumber() {
-		return patientNumber;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setPatientNumber(String patientNumber) {
-		this.patientNumber = patientNumber;
-	}
+    public String getPatientNumber() {
+        return patientNumber;
+    }
 
-	public LocalDate getDateOfBirth() {
-		return dateOfBirth;
-	}
+    public void setPatientNumber(String patientNumber) {
+        this.patientNumber = patientNumber;
+    }
 
-	public void setDateOfBirth(LocalDate dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
 
-	public AddressEntity getAddress() {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
-		return address;
-	}
+    public AddressEntity getAddress() {
 
-	public void setAddress(AddressEntity address) {
+        return address;
+    }
 
-		this.address = address;
-	}
+    public void setAddress(AddressEntity address) {
 
-	public List<VisitEntity> getVisits() {
+        this.address = address;
+    }
 
-		return visits;
-	}
+    public List<VisitEntity> getVisits() {
 
-	public void setVisits(List<VisitEntity> visits) {
+        return visits;
+    }
 
-		this.visits = visits;
-	}
+    public void setVisits(List<VisitEntity> visits) {
+
+        this.visits = visits;
+    }
 }

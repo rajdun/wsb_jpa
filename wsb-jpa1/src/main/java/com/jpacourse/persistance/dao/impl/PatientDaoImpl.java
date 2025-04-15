@@ -1,12 +1,10 @@
-
 package com.jpacourse.persistance.dao.impl;
 
+import com.jpacourse.persistance.dao.PatientDao;
 import com.jpacourse.persistance.entity.DoctorEntity;
+import com.jpacourse.persistance.entity.PatientEntity;
 import com.jpacourse.persistance.entity.VisitEntity;
 import org.springframework.stereotype.Repository;
-
-import com.jpacourse.persistance.dao.PatientDao;
-import com.jpacourse.persistance.entity.PatientEntity;
 
 import java.time.LocalDateTime;
 import java.util.List;

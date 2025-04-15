@@ -5,6 +5,10 @@ import com.jpacourse.persistance.entity.DoctorEntity;
 import jakarta.annotation.Nullable;
 
 public class DoctorMapper {
+
+    private DoctorMapper() {
+    }
+
     public static DoctorTO toDoctorTO(@Nullable DoctorEntity doctor) {
         return doctor == null ? null : new DoctorTO(
                 doctor.getId(),

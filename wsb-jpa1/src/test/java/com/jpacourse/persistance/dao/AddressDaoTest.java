@@ -9,14 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-public class AddressDaoTest
-{
+class AddressDaoTest {
     @Autowired
     private AddressDao addressDao;
 
     @Transactional
     @Test
-    public void testShouldFindAddressById() {
+    void testShouldFindAddressById() {
         // given
         // when
         AddressEntity addressEntity = addressDao.findOne(901L);
@@ -27,7 +26,7 @@ public class AddressDaoTest
 
     @Transactional
     @Test
-    public void testShouldSaveAddress() {
+    void testShouldSaveAddress() {
         // given
         AddressEntity addressEntity = new AddressEntity();
         addressEntity.setAddressLine1("line1");
@@ -42,12 +41,12 @@ public class AddressDaoTest
         // then
         assertThat(saved).isNotNull();
         assertThat(saved.getId()).isNotNull();
-        assertThat(addressDao.count()).isEqualTo(entitiesNumBefore+1);
+        assertThat(addressDao.count()).isEqualTo(entitiesNumBefore + 1);
     }
 
     @Transactional
     @Test
-    public void testShouldSaveAndRemoveAddress() {
+    void testShouldSaveAndRemoveAddress() {
         // given
         AddressEntity addressEntity = new AddressEntity();
         addressEntity.setAddressLine1("line1");

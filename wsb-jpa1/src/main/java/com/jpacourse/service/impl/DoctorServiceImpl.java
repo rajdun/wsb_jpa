@@ -15,7 +15,7 @@ import java.util.List;
 public class DoctorServiceImpl implements DoctorService {
 
     private final DoctorDao doctorDao;
-    
+
     @Autowired
     public DoctorServiceImpl(DoctorDao doctorDao) {
         this.doctorDao = doctorDao;
