@@ -35,7 +35,6 @@ public class PatientDaoTest {
     }
 
     @Test
-
     void shouldFindPatientWithMoreThanOneVisit() {
 
         // Given
@@ -51,7 +50,6 @@ public class PatientDaoTest {
     }
 
     @Test
-
     void shouldFindPatientWithHeightDefined() {
 
         // Given
@@ -63,6 +61,14 @@ public class PatientDaoTest {
         // Then
         assertThat(patients).isNotEmpty();
         assertThat(patients.get(0).getHeight()).isGreaterThanOrEqualTo(height);
+    }
 
+    @Test
+    void shouldFindPatientById() {
+        var patient = patientDao.getOne(201l);
+
+        assertThat(patient).isNotNull();
+        assertThat(patient.getId()).isEqualTo(201l);
+        assertThat(patient.getHeight()).isEqualTo(188);
     }
 }
